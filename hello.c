@@ -6,10 +6,6 @@ void hi();
 
 int main()
 {
-  printf("NNNN\n");
-  printf("Hi\n");
-  printf("Hi man\n");
-  printf("Hi man\n");
   int a = 3;
   printf("+---+----+\n");
   printf("|%3d|%4d|\n", a, 550);
