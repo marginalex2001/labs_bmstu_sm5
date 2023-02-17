@@ -1,0 +1,45 @@
+#include <iostream>
+
+namespace first_space
+{
+	using namespace std;
+	int s = 1;
+	void func()
+	{
+		int s = 11;
+		cout << "Внутри first_space: " << endl;
+		cout << "s: " << first_space::s << endl;
+		cout << "s: " << s << endl;
+	}
+}
+
+namespace second_space
+{
+	int s = 2;
+	void func()
+	{
+		int s = 22;
+		std::cout << "Внутри second_space: " << std::endl;
+		std::cout << "s: " << second_space::s << std::endl;
+		std::cout << "s: " << s << std::endl;
+	}
+}
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	first_space::func();
+	second_space::func();
+
+	int s = 0;
+	cout << "Внутри main: " << endl;
+	std::cout << "s: " << s << std::endl;
+	cout << "s: " << first_space::s << endl;
+	cout << "s: " << second_space::s << endl;
+	
+
+	return 0;
+}

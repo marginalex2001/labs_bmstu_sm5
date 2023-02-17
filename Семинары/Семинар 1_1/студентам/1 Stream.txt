@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string> // для работы со строками
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	// вывод в поток stdout констант
+	cout << "Вывод целочисленной константы: " << 42 << endl;
+	cout << "Вывод константы типа float: " << 1.2f << endl;
+	cout << "Вывод константы типа double: " << 2.45 << endl;
+	cout << "Вывод одиночного символа: " << '#' << endl;
+	cout << "Вывод константной строки: " << "Строка:)" << endl;
+	cout << endl;
+
+	int i = 1;
+	double d = 12.2;
+	float f = 2.4f;
+	char c = '~';
+	string s = "Hello, world!";
+
+	// вывод в поток stdout переменных
+	cout << "Вывод целочисленной константы: " << i << endl;
+	cout << "Вывод переменной типа float: " << d << endl;
+	cout << "Вывод переменной типа double: " << f << endl;
+	cout << "Вывод одиночного символа: " << c << endl;
+	cout << "Вывод строки: " << s << endl;
+	cout << endl;
+
+	// вывод в поток stdout элементов массива
+	const int length = 3;
+	float array[length] = { 1.123, -2.234, 3.345 };
+	for (int i = 0; i < length; i++)
+	{
+		cout << setw(10) << array[i]; // установили ширину поля вывода
+	}
+
+	cout << '\n';
+
+	for (int i = 0; i < length; i++)
+	{
+		cout << setprecision(6) << fixed << showpos << array[i] << ' '; //  установили кол-во знаком после запятой и вывели + для полож. чисел
+	}
+
+	// вывод числовых констант в разных системах счисления
+	// noshowpos - отмена вывода + перед положительными числами
+	cout << endl <<  noshowpos << "\n10: " << 15 << "\n16: " << hex << 15 << "\n8: " << oct << 15 << "\n10: " << dec << 15 << endl;
+	cout << "\n10: " << 070 << "\n16: " << hex << 070 << "\n8: " << oct << 070 << "\n10: " << dec << 070 << endl;
+	cout << "\n10: " << 0xA4 << "\n16: " << hex << 0xA4 << "\n8: " << oct << 0xA4 << "\n10: " << dec << 0xA4 << endl;
+
+	return 0;
+}

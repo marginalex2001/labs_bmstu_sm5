@@ -1,0 +1,126 @@
+#include <iostream>
+
+using namespace std;
+
+void demo_ref_1()
+{
+	int a = 100;
+	int& r = a; //инициализация при создании, после чего все
+	//операции над r относятся к a
+	cout << "r = a" << endl;
+	cout << "a: " << a << endl;
+	cout << "r: " << r << endl;
+
+	r++;
+	++r;
+	cout << "r++; ++r;" << endl;
+	cout << "a: " << a << endl;
+	cout << "r: " << r << endl;
+	
+	a = 1;
+	cout << endl << "a = 1" << endl;
+	cout << "a: " << a << endl;
+	cout << "r: " << r << endl;
+
+	r = 2;
+	cout << endl << "r = 2" << endl;
+	cout << "a: " << a << endl;
+	cout << "r: " << r << endl;
+
+	int* p = &r; //эквивалентно p = &a;
+	cout << endl << "p = &r" << endl;
+	cout << "a: " << a << endl;
+	cout << "r: " << r << endl;
+	cout << "&p: " << &p << endl;
+	cout << "p: " << p << endl;
+	cout << "*p: " << *p << endl;
+	cout << "&a: " << &a << endl;
+	cout << "&r: " << &r << endl;
+
+	*p = 12;
+	cout << endl << "*p = 12" << endl;
+	cout << "a: " << a << endl;
+	cout << "r: " << r << endl;
+	cout << "p: " << p << endl;
+	cout << "*p: " << *p << endl;
+
+	++r; //эквивалентно ++a;
+
+	int b = r; //эквивалентно b = a;
+	cout << endl << "b = r" << endl;
+	cout << "a: " << a << endl;
+	cout << "b: " << b << endl;
+	cout << "r: " << r << endl;
+
+	b = -3;
+	cout << endl << "b = -3" << endl;
+	cout << "a: " << a << endl;
+	cout << "b: " << b << endl;
+	cout << "r: " << r << endl;
+		
+	const int& cr = a; //ссылка на константу (для доступа read only)
+	b = cr + 1; //OK
+	//b = ++cr; //ERROR
+	cout << endl << "b = cr + 1" << endl;
+	cout << "b: " << b << endl;
+}
+
+void f1(int& x)
+{
+	x = 3;
+	cout << endl << "x = " << x << endl;
+}
+
+void f2(const int& x)
+{
+	//x = 3; // ERROR
+	cout << endl << "x = " << x << endl;
+}
+
+int& max_byref(int& a, int& b)
+{
+	return a < b ? b : a;
+}
+
+double f3(int a)
+{
+	cout << endl << "a = " << a << endl;
+	return 3.14;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	demo_ref_1();
+	
+	int t = 1;
+	f1(t);
+	cout << "t = " << t << endl;
+
+	t = 1;
+	f2(t);
+	cout << "t = " << t << endl;
+
+	const int d = 42;
+	// int& rd = d; //ERROR 
+	const int& rd1 = d;
+
+	double d1 = 1.2;
+	double* pd = &d1;
+	double*& r_pd = pd;
+	cout << "pd  : " << pd << endl;
+	cout << "r_pd: " << r_pd << endl;
+
+	int x = 23, y = -4; 
+	cout << "x = " << x << "; y = " << y << endl;
+	cout << "max = " << max_byref(x, y) << endl;
+
+	max_byref(x, y) = 42;
+	cout << "x = " << x << "; y = " << y << endl;
+	
+	double(&rf)(int) = f3;
+	rf(2); // равносильно f3(2)
+
+
+	return 0;
+}

@@ -1,0 +1,86 @@
+#include <iostream>
+using namespace std;
+
+inline int max(int a, int b) {
+	if (a > b)
+		return a;
+	return b;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	setlocale(LC_NUMERIC, "C");
+
+	// тип bool
+	bool t = true;
+	cout << t << endl;
+	t = false;
+	cout << t << endl;
+
+	// явное преобразование типов в C++
+	int a = static_cast<int>(34.123);
+	cout << a << endl;
+
+
+	// отмена квалификатора  const 
+	//const float pi = 3.14f;
+	//cout << pi << endl;
+	//// pi = 3.1415; // ERROR
+	//// float* p0 = &pi; // ERROR
+	//const float* p = &pi;
+	//float* pf = const_cast<float*>(&pi);
+	//*(pf) = 3.1415f;
+
+	//cout << &pi << endl;
+	//cout << pf << endl;
+	//cout << pi << endl;
+	//cout << *(pf) << endl;
+
+	// встраиваемые функции в С++
+	int maximum = max(36, -544);
+	cout << maximum << endl;
+
+	// Динамическое выделение памяти
+	int size, size1;
+	int* dan;
+	std::cout << "Введите размерность массива: "; // если нет строчки using namespace std;
+	cin >> size;
+	dan = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Dan[" << i << "] = ";
+		cin >> dan[i];
+	}
+	for (int i = 0; i < size; i++)
+		cout << dan[i] << " ";
+
+	int* temp;
+
+	// Перераспределение памяти в С++
+	std::cout << "\nВведите размерность нового массива: "; // если нет строчки using namespace std;
+	cin >> size1;
+
+	temp = new int[size1];
+	for (int i = 0; i < size1; i++)
+	{
+		if (i < size)
+			temp[i] = dan[i];
+		else
+			temp[i] = 1;
+	}
+	delete[] dan;
+
+	dan = temp;
+	temp = NULL;
+	cout << endl;
+	for (int i = 0; i < size1; i++)
+	{
+		cout << dan[i] << " ";
+	}
+	delete[] dan;
+
+	system("pause");
+	return 0;
+
+}

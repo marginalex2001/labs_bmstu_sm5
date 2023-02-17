@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+class Point {
+private:
+	int x;
+	int y;
+public:
+
+	int SetX(int x)
+	{
+		this->x = x; // (*this).x = x;
+		return this->x;
+	}
+
+	int SetY(int y)
+	{
+		this->y = y;
+		return this->y;
+	}
+
+	int GetX(void)
+	{
+		return this->x;
+	}
+
+	int GetY(void)
+	{
+		return this->y;
+	}
+
+};
+
+
+
+int main()
+{
+	Point t;
+	t.SetX(5);
+	t.SetY(6);
+	t.Print();
+	cout << '(' << t.GetX() << "," << t.GetY() << ')' << endl;
+	return 0;
+}
