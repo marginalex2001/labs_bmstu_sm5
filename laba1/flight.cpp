@@ -46,7 +46,7 @@ Flight::Flight(const Flight & flight)
 
 void Flight::Insert(const float speed, const char *name, const char *type)
 {
-	cout << "INSERT" << endl;			//set speed
+	cout << "Insert values in object" << endl;			//set speed
 	this->speed = speed;
 	
 	len_name = strlen(name);						//set name
@@ -68,6 +68,7 @@ void Flight::Read()
 
 Flight::~Flight()
 {
+	cout << "DESTRUCT" << endl;
 	delete [] name;
 	delete [] type;
 }//destruct
