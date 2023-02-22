@@ -10,9 +10,9 @@ Flight::Flight()
 {
 	cout << "Construct by default" << endl;
 	this->name = new char[2];
-	*name = 'o\0';
+	*name = '\0';
 	this->type = new char[2];
-	*type = 'o\0';
+	*type = '\0';
 }
 
 Flight::Flight(const int speed_, const char *name_, const char *type_)
