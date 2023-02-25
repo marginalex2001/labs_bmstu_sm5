@@ -66,6 +66,37 @@ void Flight::Read()
 	cout << "Type: " << type << endl;
 }
 
+char Flight::Read(int address)
+{
+	switch (address) {
+		case 1:
+			return speed;
+			break;
+		case 2:
+			return *name;
+			break;
+		case 3:
+			return *type;
+			break;
+		default:
+			Read();
+			return 0;
+			break;
+	}
+	// if (address == 1) {
+	// 	cout << speed;
+	// }
+	// if (address == 2) {
+	// 	cout << name;
+	// }
+	// if (address == 3) {
+	// 	cout << type;
+	// }
+	// else {
+	// 	Read();
+	// }
+}
+
 Flight::~Flight()
 {
 	cout << "DESTRUCT" << endl;

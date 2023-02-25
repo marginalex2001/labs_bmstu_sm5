@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=main.cpp flight.cpp
+SOURCES=main.cpp flight.cpp table.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=laba1
 

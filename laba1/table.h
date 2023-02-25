@@ -2,6 +2,6 @@
 #define TABLE_H
 #include "flight.h"
 
-void table(Flight);
+void table(Flight &object);
 
 #endif

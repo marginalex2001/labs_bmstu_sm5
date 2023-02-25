@@ -18,6 +18,7 @@ class Flight
 		~Flight(); 				//destruct
 		void Insert(const float speed, const char *name, const char *type);
 		void Read();
+		char Read(int address);
 
 };
 
